@@ -1,0 +1,11 @@
+.dashboard-panel {
+  flex: 1;
+  padding: 40px;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  .dashboard-panel {
+    padding: 16px;
+  }
+}

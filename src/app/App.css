@@ -1,0 +1,12 @@
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+    min-height: auto;
+  }
+}
