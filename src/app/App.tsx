@@ -39,16 +39,6 @@ const App: React.FC = () => {
               )
             }
           />
-          <Route
-            path="/*"
-            element={
-              isLoggedIn ? (
-                <Navigate to="/projectManagement" replace />
-              ) : (
-                <Navigate to="/login" replace />
-              )
-            }
-          />
         </Routes>
       </div>
     </Router>
