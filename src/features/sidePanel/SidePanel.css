@@ -1,3 +1,5 @@
+import './sidePanel.css';
+
 .side-panel {
   width: 200px;
   background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
@@ -45,6 +47,44 @@
 .side-panel a.active {
   background: #007bff;
   color: #fff;
+}
+
+.sidebar-item-create-user {
+  background: #e3f2fd !important;
+  color: #1976d2 !important;
+  font-weight: bold;
+}
+
+.create-user-form {
+  margin: 32px auto;
+  padding: 24px;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.create-user-form label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.create-user-form input {
+  margin-left: 10px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.create-user-form button {
+  margin-top: 16px;
+  padding: 8px 20px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

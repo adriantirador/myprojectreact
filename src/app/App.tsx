@@ -1,14 +1,32 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import LoginPage from '../features/auth/LoginPage';
 import DashboardPage from '../features/dashboard/DashboardPage';
+import CreateUser from '../features/user/CreateUser';
 import SidePanel from '../features/sidePanel/SidePanel';
-import { useSelector } from 'react-redux';
 import Header from './Header';
+
 import './App.css';
 
+// Replace 'any' with your actual RootState type
+const useAuth = () => useSelector((state: any) => state.auth.isLoggedIn);
+
+const ProtectedRoute: React.FC<{ element: React.ReactNode }> = ({ element }) => {
+  const isLoggedIn = useAuth();
+  return isLoggedIn ? <>{element}</> : <Navigate to="/login" replace />;
+};
+
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="main-layout">
+    <SidePanel />
+    {children}
+  </div>
+);
+
 const App: React.FC = () => {
-  const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
+  const isLoggedIn = useAuth();
 
   return (
     <Router>
@@ -19,25 +37,18 @@ const App: React.FC = () => {
           <Route
             path="/dashboard"
             element={
-              isLoggedIn ? (
-                <div className="main-layout">
-                  <SidePanel />
-                  <DashboardPage />
-                </div>
-              ) : (
-                <Navigate to="/login" replace />
-              )
+              <ProtectedRoute element={<Layout><DashboardPage /></Layout>} />
+            }
+          />
+          <Route
+            path="/create-user"
+            element={
+              <ProtectedRoute element={<Layout><CreateUser /></Layout>} />
             }
           />
           <Route
             path="/*"
-            element={
-              isLoggedIn ? (
-                <Navigate to="/dashboard" replace />
-              ) : (
-                <Navigate to="/login" replace />
-              )
-            }
+            element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} replace />}
           />
         </Routes>
       </div>

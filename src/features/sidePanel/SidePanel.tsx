@@ -5,9 +5,9 @@ import {
   Toolbar, Typography, IconButton, useMediaQuery, Box, Avatar
 } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
-import FolderIcon from '@mui/icons-material/Folder';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../auth/authSlice';
 
@@ -60,15 +60,16 @@ const SidePanel: React.FC = () => {
         <ListItem disablePadding>
           <ListItemButton
             component={Link}
-            to="/project"
-            selected={location.pathname === '/project'}
+            to="/create-user"
+            selected={location.pathname === '/create-user'}
             onClick={() => setMobileOpen(false)}
             sx={{ borderRadius: 2, mx: 1, my: 0.5 }}
+            className="sidebar-item-create-user"
           >
             <ListItemIcon>
-              <FolderIcon color={location.pathname === '/project' ? 'primary' : 'inherit'} />
+              <PersonAddAltIcon color={location.pathname === '/create-user' ? 'primary' : 'inherit'}/>
             </ListItemIcon>
-            <ListItemText primary="Project Management" />
+            <ListItemText primary="Create User" />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>

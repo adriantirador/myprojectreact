@@ -22,11 +22,6 @@ coverage/
 .env
 .env.*.local
 
-# Next.js build output
-.next/
-
-# Nuxt build output
-.nuxt/
 
 # SvelteKit build output
 .svelte-kit/
@@ -39,9 +34,6 @@ out/
 # Dependency directories
 jspm_packages/
 bower_components/
-
-# TypeScript
-*.tsbuildinfo
 
 # Optional npm cache directory
 .npm/
